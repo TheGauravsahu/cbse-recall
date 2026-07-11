@@ -5,7 +5,6 @@ import { useProgressStore } from '../../stores/progressStore';
 import { playSFX } from '../../utils/sound';
 import { searchQuestions } from '../../data/questions';
 import { 
-  BrainCircuit, 
   Flame, 
   Coins, 
   Sun, 
@@ -78,7 +77,7 @@ export default function Navbar() {
           className="flex items-center gap-2.5 font-poppins text-lg font-extrabold tracking-tight text-primary transition hover:scale-102 dark:text-white"
         >
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent text-white shadow-md shadow-accent/20">
-            <BrainCircuit className="h-6 w-6" />
+            <img src='/favicon.svg' className="h-6 w-6" />
           </div>
           <span className="bg-gradient-to-r from-accent to-accent-hover bg-clip-text text-transparent">
             CBSE

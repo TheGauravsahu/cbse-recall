@@ -9,6 +9,7 @@ import SubjectDetails from './pages/SubjectDetails';
 import Quiz from './pages/Quiz';
 import Results from './pages/Results';
 import Review from './pages/Review';
+import NotesViewer from './pages/NotesViewer';
 
 // V2 Feature Modular Components
 import Dashboard from './features/dashboard/Dashboard';
@@ -41,6 +42,8 @@ export default function App() {
             <Route path="/subjects" element={<Subjects />} />
             <Route path="/subject/:subjectId" element={<SubjectDetails />} />
             <Route path="/quiz/:subjectId/:chapterId" element={<Quiz />} />
+            <Route path="/notes/:subjectId/:chapterId" element={<NotesViewer />} />
+            <Route path="/notes" element={<NotesViewer />} />
             <Route path="/result/:attemptId" element={<Results />} />
             <Route path="/review/:attemptId" element={<Review />} />
             <Route path="/revision" element={<SpacedRepetition />} />

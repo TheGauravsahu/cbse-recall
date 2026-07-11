@@ -14,8 +14,49 @@ import {
   Lightbulb, 
   AlertCircle, 
   RefreshCcw, 
-  BookMarked 
+  BookMarked,
+  BookOpen
 } from 'lucide-react';
+
+function getHeadingAnchorForQuestion(question) {
+  const text = (question.question + " " + (question.tags || []).join(" ")).toLowerCase();
+  
+  if (text.includes('identity') || text.includes('identities')) {
+    return 'trigonometric-identities';
+  }
+  if (text.includes('ratio')) {
+    return 'trigonometric-ratios';
+  }
+  if (text.includes('angle') || text.includes('sin 60') || text.includes('value of')) {
+    return 'standard-angles-table';
+  }
+  if (text.includes('ohm')) {
+    return 'ohms-law';
+  }
+  if (text.includes('series') || text.includes('parallel') || text.includes('combination') || text.includes('resistance')) {
+    return 'resistance-combinations';
+  }
+  if (text.includes('rowlatt')) {
+    return 'the-rowlatt-act';
+  }
+  if (text.includes('jallianwala')) {
+    return 'jallianwala-bagh-massacre-13-april-1919';
+  }
+  if (text.includes('satyagraha') || text.includes('champaran') || text.includes('kheda') || text.includes('ahmedabad')) {
+    return 'timeline-of-key-satyagrahas-1915---1918';
+  }
+  if (text.includes('salt') || text.includes('dandi')) {
+    return 'the-salt-march-and-civil-disobedience';
+  }
+  if (text.includes('tense') || text.includes('verb')) {
+    return 'the-tense-matrix';
+  }
+  if (text.includes('modal') || text.includes('must') || text.includes('should')) {
+    return 'modals-chart';
+  }
+  
+  return '';
+}
 
 export default function Review() {
   const { attemptId } = useParams();
@@ -196,6 +237,18 @@ export default function Review() {
                       <span className="text-amber-500">Method: </span>
                       {q.solution}
                     </div>
+
+                    <button
+                      onClick={() => {
+                        playSFX('click');
+                        const anchor = getHeadingAnchorForQuestion(q);
+                        navigate(`/notes/${attempt.subjectId}/${attempt.chapterId}${anchor ? `#${anchor}` : ''}`);
+                      }}
+                      className="mt-3.5 inline-flex items-center gap-1.5 rounded-xl border border-accent/20 bg-accent/5 px-3 py-2 text-xs font-extrabold text-accent hover:bg-accent/10 transition cursor-pointer dark:border-accent/40 dark:bg-accent/15 dark:text-accent-hover"
+                    >
+                      <BookOpen className="h-3.5 w-3.5" />
+                      Verify in Chapter Notes
+                    </button>
                   </div>
                 </div>
               </div>
