@@ -316,30 +316,30 @@ export default function FormulasCenter() {
       </div>
 
       {/* Print-only layout */}
-      <div className="hidden print:block text-slate-800 bg-white p-6 max-w-4xl mx-auto">
-        <div className="text-center border-b pb-4 mb-6">
-          <h1 className="font-sans text-2xl font-bold">CBSE Class 10 Mathematics Cheat Sheet</h1>
-          <p className="text-xs text-slate-500 mt-1">Trigonometric Ratio Grids & Pythagorean Identities</p>
+      <div className="hidden print:block text-slate-800 bg-white p-4 max-w-3xl mx-auto">
+        <div className="text-center border-b pb-2 mb-4">
+          <h1 className="font-sans text-xl font-bold">CBSE Class 10 Mathematics Cheat Sheet</h1>
+          <p className="text-[10px] text-slate-500 mt-0.5">Trigonometric Ratio Grids & Pythagorean Identities</p>
         </div>
 
         {/* 1. Trig ratios table */}
-        <div className="mb-8">
-          <h2 className="text-sm font-bold uppercase tracking-wider mb-3 text-accent border-b pb-1">1. Trigonometric Ratios Table</h2>
-          <table className="w-full text-center border-collapse border border-slate-350 text-xs">
+        <div className="mb-4">
+          <h2 className="text-xs font-bold uppercase tracking-wider mb-2 text-accent border-b pb-0.5">1. Trigonometric Ratios Table</h2>
+          <table className="w-full text-center border-collapse border border-slate-350 text-[10px]">
             <thead>
               <tr className="bg-slate-50 border-b border-slate-350">
-                <th className="py-2 px-3 border border-slate-350 text-left font-bold">Ratio</th>
+                <th className="py-1 px-2 border border-slate-350 text-left font-bold">Ratio</th>
                 {ANGLES.map(ang => (
-                  <th key={ang} className="py-2 px-3 border border-slate-350 font-bold">{ang}</th>
+                  <th key={ang} className="py-1 px-2 border border-slate-350 font-bold">{ang}</th>
                 ))}
               </tr>
             </thead>
             <tbody>
               {RATIOS.map(ratio => (
                 <tr key={ratio} className="border-b border-slate-300">
-                  <td className="py-2 px-3 border border-slate-350 text-left font-bold capitalize">{ratio}</td>
+                  <td className="py-1 px-2 border border-slate-350 text-left font-bold capitalize">{ratio}</td>
                   {ANGLES.map(ang => (
-                    <td key={ang} className="py-2 px-3 border border-slate-350">{TRIG_TABLE[ratio][ang]}</td>
+                    <td key={ang} className="py-1 px-2 border border-slate-350">{TRIG_TABLE[ratio][ang]}</td>
                   ))}
                 </tr>
               ))}
@@ -348,12 +348,12 @@ export default function FormulasCenter() {
         </div>
 
         {/* 2. Identities */}
-        <div className="mb-8">
-          <h2 className="text-sm font-bold uppercase tracking-wider mb-3 text-accent border-b pb-1">2. Equations & Formulas</h2>
-          <div className="grid grid-cols-2 gap-x-6 gap-y-3">
+        <div className="mb-4">
+          <h2 className="text-xs font-bold uppercase tracking-wider mb-2 text-accent border-b pb-0.5">2. Equations & Formulas</h2>
+          <div className="grid grid-cols-2 gap-x-6 gap-y-2">
             {[...IDENTITIES, ...OTHER_FORMULAS].map((form, idx) => (
-              <div key={idx} className="border-b pb-1.5 text-xs">
-                <span className="text-[10px] text-slate-400 block uppercase font-bold tracking-wide">{form.desc}</span>
+              <div key={idx} className="border-b pb-1 text-[10px]">
+                <span className="text-[9px] text-slate-400 block uppercase font-bold tracking-wide">{form.desc}</span>
                 <span className="font-mono font-bold text-slate-900">{form.name}</span>
               </div>
             ))}
@@ -361,7 +361,7 @@ export default function FormulasCenter() {
         </div>
 
         {/* Footer */}
-        <div className="text-center mt-12 pt-4 border-t text-[10px] text-slate-400">
+        <div className="text-center mt-6 pt-2 border-t text-[9px] text-slate-400">
           Generated via CBSE Recall Study Companion. Solidify concepts through active recall.
         </div>
       </div>
