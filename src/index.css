@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Geist:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+/* Enable class-based Dark Mode selector in Tailwind CSS v4 */
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-primary: #0F172A; /* Navy Blue */
+  --color-secondary: #1E293B; /* Slate */
+  --color-accent: #2563EB; /* Royal Blue */
+  --color-accent-hover: #3B82F6;
+  
+  --color-success: #22C55E;
+  --color-warning: #F59E0B;
+  --color-error: #EF4444;
+  
+  --color-bg-light: #F8FAFC;
+  --color-bg-dark: #020617;
+  
+  --color-card-light: #FFFFFF;
+  --color-card-dark: #0F172A;
+  
+  --font-sans: 'Inter', 'Geist', sans-serif;
+  --font-poppins: 'Geist', 'Inter', sans-serif;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-bg-light);
+    color: var(--color-primary);
+    transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1), color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  body.dark, .dark body {
+    background-color: var(--color-bg-dark);
+    color: #F8FAFC;
+  }
+  
+  /* Styled, low-profile scrollbars */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 9999px;
+  }
+  .dark ::-webkit-scrollbar-thumb {
+    background: #334155;
+  }
+}
+
+/* Minimalist Glass Card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+}
+
+.dark .glass-card {
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(248, 250, 252, 0.04);
+}
+
+/* GitHub Contribution / Heatmap Cells */
+.heatmap-cell {
+  aspect-ratio: 1;
+  border-radius: 3px;
+  transition: transform 0.15s ease;
+}
+.heatmap-cell:hover {
+  transform: scale(1.15);
+  z-index: 10;
+}
+
+/* Animated Glow Accents */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.15;
+    transform: scale(1.05);
+  }
+}
+
+.glow-ambient {
+  position: absolute;
+  filter: blur(100px);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  animation: pulseGlow 10s ease-in-out infinite;
+}
+
+/* Custom shake on wrong answer */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+/* Premium Dark Mode Card Details (Linear/Apple style) */
+.dark .bg-card-dark,
+.dark .bg-slate-900,
+.dark .bg-slate-850 {
+  background-image: linear-gradient(180deg, rgba(30, 41, 59, 0.45) 0%, rgba(15, 23, 42, 0) 100%);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.055), 0 4px 12px -2px rgba(0, 0, 0, 0.3);
+}
+
+.dark .glass-card {
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08), 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
