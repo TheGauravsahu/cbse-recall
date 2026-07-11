@@ -14,6 +14,31 @@ const getAudioContext = () => {
  * @param {string} type - 'click' | 'correct' | 'wrong' | 'level_up' | 'achievement'
  */
 export const playSFX = (type) => {
+  // Trigger Haptic Feedback for mobile devices (Vibration API)
+  if (typeof navigator !== 'undefined' && navigator.vibrate) {
+    try {
+      switch (type) {
+        case 'click':
+          navigator.vibrate(12); // Short crisp click pulse
+          break;
+        case 'correct':
+          navigator.vibrate([15, 30, 15]); // Double success pulse
+          break;
+        case 'wrong':
+          navigator.vibrate(80); // Longer buzz pulse for warning
+          break;
+        case 'level_up':
+        case 'achievement':
+          navigator.vibrate([30, 40, 30, 40, 60]); // Celebratory pulsing sequence
+          break;
+        default:
+          break;
+      }
+    } catch (e) {
+      // Ignore vibration blocks (e.g. user permission limits)
+    }
+  }
+
   const { soundEnabled } = useSettingsStore.getState();
   if (!soundEnabled) return;
 

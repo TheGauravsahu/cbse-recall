@@ -6,6 +6,7 @@ import { useProgressStore } from '../../stores/progressStore';
 import { useHistoryStore } from '../../stores/historyStore';
 import { useAnalyticsStore } from '../../stores/analyticsStore';
 import { ACHIEVEMENTS_LIST, useAchievementStore } from '../../stores/achievementStore';
+import { useAuthStore } from '../../stores/authStore';
 import { subjects } from '../../data/subjects';
 import { 
   Trophy, 
@@ -28,6 +29,7 @@ export default function ProfilePanel() {
   const { attempts } = useHistoryStore();
   const { unlockedAchievements } = useAchievementStore();
   const { practiceHeatmap, responseTimes, accuracyHistory, difficultySolves } = useAnalyticsStore();
+  const { user } = useAuthStore();
 
   const handleBackClick = () => {
     playSFX('click');
@@ -187,7 +189,7 @@ export default function ProfilePanel() {
             </div>
             
             <h2 className="font-poppins text-lg font-extrabold text-primary dark:text-white">
-              CBSE Scholar
+              {user.name}
             </h2>
             <p className="text-xs text-slate-400 dark:text-slate-500 mb-6">
               Total XP points: <span className="font-bold text-accent">{xp} XP</span>

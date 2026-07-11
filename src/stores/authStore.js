@@ -5,7 +5,7 @@ export const useAuthStore = create(
   persist(
     (set) => ({
       user: {
-        name: "CBSE Scholar",
+        name: "Gaurav Sahu",
         avatar: "🎓",
         grade: "Class 10 (CBSE)",
         favoriteSubject: "maths"

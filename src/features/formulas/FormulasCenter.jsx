@@ -37,12 +37,48 @@ const IDENTITIES = [
 ];
 
 const OTHER_FORMULAS = [
-  { name: "HCF * LCM = a * b", desc: "Real Numbers Formula" },
-  { name: "x = [-b ± √(b² - 4ac)] / 2a", desc: "Quadratic Equation Roots" },
-  { name: "a_n = a + (n - 1)d", desc: "Arithmetic Progression nth Term" },
-  { name: "S_n = n/2 * [2a + (n - 1)d]", desc: "Arithmetic Progression Sum" },
-  { name: "Volume of Cone = 1/3 * π * r² * h", desc: "Surface Areas & Volumes" },
-  { name: "Volume of Sphere = 4/3 * π * r³", desc: "Surface Areas & Volumes" }
+  // 1. Real Numbers & Polynomials
+  { name: "HCF(a, b) * LCM(a, b) = a * b", desc: "Real Numbers Product" },
+  { name: "α + β = -b/a  |  α * β = c/a", desc: "Quadratic Zeroes Relation" },
+  
+  // 2. Linear Equations & Quadratics
+  { name: "a1/a2 ≠ b1/b2 (Unique Solution)", desc: "Linear System Intersecting" },
+  { name: "a1/a2 = b1/b2 = c1/c2 (Infinite)", desc: "Linear System Coincident" },
+  { name: "a1/a2 = b1/b2 ≠ c1/c2 (No Solution)", desc: "Linear System Parallel" },
+  { name: "D = b² - 4ac", desc: "Quadratic Discriminant" },
+  { name: "x = [-b ± √D] / 2a", desc: "Quadratic Shreedharacharya" },
+  { name: "D > 0: Distinct | D = 0: Equal | D < 0: Imaginary", desc: "Quadratic Roots Nature" },
+  
+  // 3. AP & Geometry
+  { name: "a_n = a + (n - 1)d", desc: "AP Arithmetic: nth Term" },
+  { name: "S_n = n/2*[2a + (n-1)d] or n/2*[a + l]", desc: "AP Arithmetic: First n Sum" },
+  { name: "d = √[(x₂ - x₁)² + (y₂ - y₁)²]", desc: "Coordinate: Distance" },
+  { name: "P(x,y) = [(m₁x₂+m₂x₁)/(m₁+m₂), (m₁y₂+m₂y₁)/(m₁+m₂)]", desc: "Coordinate: Section Point" },
+  { name: "M(x, y) = [(x₁ + x₂)/2,  (y₁ + y₂)/2]", desc: "Coordinate: Midpoint" },
+  { name: "G(x,y) = [(x₁+x₂+x₃)/3, (y₁+y₂+y₃)/3]", desc: "Coordinate: Centroid" },
+  
+  // 4. Circles & Areas
+  { name: "PA = PB", desc: "Circles: External Tangents" },
+  { name: "Area = πr²  |  Circumference = 2πr", desc: "Circle Properties" },
+  { name: "Area of Sector = (θ / 360) * π * r²", desc: "Circle Sector Area" },
+  { name: "Length of Arc = (θ / 360) * 2 * π * r", desc: "Circle Sector Arc Length" },
+  { name: "Area of Segment = Sector Area - Area of Triangle", desc: "Circle Segment Area" },
+  
+  // 5. Surface Areas & Volumes
+  { name: "TSA = 2(lb + bh + hl)  |  Vol = l * b * h", desc: "Mensuration: Cuboid" },
+  { name: "TSA = 6a²  |  Vol = a³  |  Diag = a√3", desc: "Mensuration: Cube" },
+  { name: "CSA = 2πrh  |  TSA = 2πr(r + h)  |  Vol = πr²h", desc: "Mensuration: Cylinder" },
+  { name: "CSA = πrl  |  l = √(r² + h²)  |  Vol = 1/3*πr²h", desc: "Mensuration: Cone" },
+  { name: "SA = 4πr²  |  Vol = 4/3 * πr³", desc: "Mensuration: Sphere" },
+  { name: "CSA = 2πr²  |  TSA = 3πr²  |  Vol = 2/3 * πr³", desc: "Mensuration: Hemisphere" },
+  
+  // 6. Statistics & Probability
+  { name: "Mean (Direct) = Σ(f_i * x_i) / Σf_i", desc: "Stats: Grouped Mean" },
+  { name: "Median = l + [(n/2 - CF) / f] * h", desc: "Stats: Grouped Median" },
+  { name: "Mode = l + [(f₁ - f₀) / (2f₁ - f₀ - f₂)] * h", desc: "Stats: Grouped Mode" },
+  { name: "3 * Median = Mode + 2 * Mean", desc: "Stats: Empirical Relation" },
+  { name: "P(E) = Favorable / Total Outcomes", desc: "Probability: Event Probability" },
+  { name: "P(E) + P(not E) = 1  |  0 ≤ P(E) ≤ 1", desc: "Probability: Event Rules" }
 ];
 
 export default function FormulasCenter() {
@@ -350,7 +386,7 @@ export default function FormulasCenter() {
         {/* 2. Identities */}
         <div className="mb-4">
           <h2 className="text-xs font-bold uppercase tracking-wider mb-2 text-accent border-b pb-0.5">2. Equations & Formulas</h2>
-          <div className="grid grid-cols-2 gap-x-6 gap-y-2">
+          <div className="grid grid-cols-3 gap-x-4 gap-y-1.5">
             {[...IDENTITIES, ...OTHER_FORMULAS].map((form, idx) => (
               <div key={idx} className="border-b pb-1 text-[10px]">
                 <span className="text-[9px] text-slate-400 block uppercase font-bold tracking-wide">{form.desc}</span>
